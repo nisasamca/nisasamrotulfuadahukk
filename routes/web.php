@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LendingController;
 Route::get('/', function () {
     return view('login');
 });
@@ -40,6 +41,27 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/staff/dashboard', function () {
             return view('staff.dashboard');
         })->name('staff.dashboard');
+
+        Route::get('/staff/items', function () {
+        return view('staff.items');
+        })->name('staff.items');
+
+        Route::get('/staff/lending', function () {
+            return view('staff.lending');
+        })->name('staff.lending');
+
+        Route::get('/staff/users/edit', function () {
+            return view('staff.users_edit');
+        })->name('staff.users.edit');
+        });
+
     });
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/lendings', [LendingController::class, 'index'])->name('lending.index');
+    Route::post('/lendings/store', [LendingController::class, 'store'])->name('lending.store');
+    Route::patch('/lendings/return/{id}', [LendingController::class, 'return'])->name('lending.return');
+    Route::delete('/lendings/delete/{id}', [LendingController::class, 'destroy'])->name('lending.delete');
 });
 

@@ -13,7 +13,7 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->nama }}</td>
-            <td>{{ $item->category->nama ?? 'N/A' }}</td>
+            <td>{{ $item->category }}</td>
             <td>{{ $item->kondisi }}</td>
             <td>{{ $item->lokasi }}</td>
         </tr>

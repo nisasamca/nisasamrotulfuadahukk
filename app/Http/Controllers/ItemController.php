@@ -13,6 +13,7 @@ class ItemController extends Controller
         $items = Item::all();
         return view('admin.items', compact('items'));
     }
+    
 
     public function store(Request $request) {
         $request->validate([
