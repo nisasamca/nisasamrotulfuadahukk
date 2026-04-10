@@ -3,9 +3,16 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Categories Data</h2>
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
-            <i class="bi bi-plus-lg me-1"></i> Add
-        </button>
+
+        <div class="d-flex">
+            <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+                <i class="bi bi-plus-lg me-1"></i> Add
+            </button>
+
+            <a href="{{ route('categories.export') }}" class="btn btn-success">
+                <i class="bi bi-file-earmark-excel me-1"></i> Export Excel
+            </a>
+        </div>
     </div>
 
     @if(session('success'))
@@ -25,7 +32,6 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Division</th>
                             <th scope="col">PJ</th>
-                            <th scope="col" width="15%">Total Item</th>
                             <th scope="col" width="10%">Action</th>
                         </tr>
                     </thead>
@@ -36,7 +42,6 @@
                             <td>{{ $category->nama }}</td>
                             <td>{{ $category->division }}</td>
                             <td>{{ $category->pj }}</td>
-                            <td>{{ $category->items_count ?? 0 }}</td>
                             <td>
                                 <button class="btn btn-sm btn-warning text-white edit-btn" 
                                         data-bs-toggle="modal" 

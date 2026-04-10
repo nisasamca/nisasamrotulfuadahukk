@@ -3,14 +3,18 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ItemController;
 Route::get('/', function () {
     return view('login');
 });
 Route::get('/login', [AuthController::class, 'form'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/categories/export', [CategoryController::class, 'export'])->name('categories.export');
 Route::resource('categories', CategoryController::class);
+
+Route::resource('items', ItemController::class);
+Route::get('items-export', [ItemController::class, 'export'])->name('items.export');
 
 Route::middleware(['auth'])->group(function () {
     // Route untuk Admin
@@ -20,9 +24,7 @@ Route::middleware(['auth'])->group(function () {
         })->name('admin.dashboard');
         Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
 
-        Route::get('/admin/items', function () {
-            return view('admin.items');
-        })->name('admin.items');   
+        Route::get('/admin/items', [ItemController::class, 'index'])->name('admin.items');   
         
         Route::get('/admin/users', function () {
             return view('admin.users');
@@ -40,3 +42,4 @@ Route::middleware(['auth'])->group(function () {
         })->name('staff.dashboard');
     });
 });
+

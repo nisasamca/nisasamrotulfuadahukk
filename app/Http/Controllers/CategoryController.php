@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Exports\CategoriesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -35,5 +37,11 @@ class CategoryController extends Controller
     public function destroy(Category $category) {
         $category->delete();
         return back()->with('success', 'Category deleted successfully!');
+    }
+
+
+    public function export() 
+    {
+        return Excel::download(new CategoriesExport, 'data-kategori.xlsx');
     }
 }
