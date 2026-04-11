@@ -9,13 +9,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('kategori');
-            $table->string('kondisi');
-            $table->string('lokasi');
-            $table->timestamps();
-        });
+        $table->id();
+        $table->string('nama');
+        $table->foreignId('kategori_id')->constrained('categories')->onDelete('cascade');
+        $table->enum('kondisi', ['baik', 'rusak']);
+        $table->string('lokasi');
+        $table->timestamps();
+    });
     }
 
     public function down(): void

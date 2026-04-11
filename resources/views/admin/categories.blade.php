@@ -32,6 +32,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Division</th>
                             <th scope="col">PJ</th>
+                            <th scope="col">Total Item</th>
                             <th scope="col" width="10%">Action</th>
                         </tr>
                     </thead>
@@ -42,6 +43,7 @@
                             <td>{{ $category->nama }}</td>
                             <td>{{ $category->division }}</td>
                             <td>{{ $category->pj }}</td>
+                            <td>{{ $category->items_count }}</td>
                             <td>
                                 <button class="btn btn-sm btn-warning text-white edit-btn" 
                                         data-bs-toggle="modal" 

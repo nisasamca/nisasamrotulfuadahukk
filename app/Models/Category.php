@@ -11,4 +11,9 @@ class Category extends Model
         'division',
         'pj'
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'kategori_id');
+    }
 }

@@ -10,7 +10,7 @@ class CategoriesExport implements FromView
     public function view(): View
     {
         return view('exports.categories', [
-            'categories' => Category::all() 
+            'categories' => Category::withCount('items')->get() 
         ]);
     }
 }

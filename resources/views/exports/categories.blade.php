@@ -5,6 +5,7 @@
             <th style="font-weight: bold; background-color: #f2f2f2;">Nama Kategori</th>
             <th style="font-weight: bold; background-color: #f2f2f2;">Division</th>
             <th style="font-weight: bold; background-color: #f2f2f2;">PJ (Penanggung Jawab)</th>
+            <th style="font-weight: bold; background-color: #f2f2f2;">Total Item</th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +15,7 @@
             <td>{{ $category->nama }}</td>
             <td>{{ $category->division }}</td>
             <td>{{ $category->pj }}</td>
+            <td>{{ $category->items_count }}</td>
         </tr>
         @endforeach
     </tbody>

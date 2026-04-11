@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Lending extends Model
 {
-    protected $fillable = ['name', 'ket', 'is_returned', 'edited_by'];
+    use HasFactory;
+
+    protected $fillable = ['name', 'ket', 'tanggal_pinjam', 'tanggal_kembali', 'is_returned', 'kondisi_kembali', 'edited_by'];
 
     public function details()
     {

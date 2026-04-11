@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::all(); 
+        $categories = Category::withCount('items')->get(); 
         return view('admin.categories', compact('categories'));
     }
 
